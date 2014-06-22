@@ -1,0 +1,24 @@
+{
+  "name": "fspeed",
+  "version": "0.0.1",
+  "description": "fast performance file system",
+  "main": "fspeed.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/WebReflection/fspeed.git"
+  },
+  "keywords": [
+    "filesystem",
+    "fs",
+    "performance"
+  ],
+  "author": "Andrea Giammarchi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WebReflection/fspeed/issues"
+  },
+  "homepage": "https://github.com/WebReflection/fspeed"
+}
