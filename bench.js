@@ -1,18 +1,28 @@
-// node bench.js
+// node 10 bench.js
 // VS
-// node bench.js ./fspeed
+// node 10 bench.js ./fspeed
+
+var
+  numberOfRequests = Math.abs(
+    parseInt(process.argv[2], 10)
+  ) || 1,
+  whichFS = process.argv[3] || 'fs'
+;
+
+
+console.log(
+  'benchmark for ' + numberOfRequests +
+  ' using require("' + whichFS + '").readFile'
+);
+
 for (var
-  // require another file or 'fs' by default
-  fs = require(process.argv[2] || 'fs'),
-  i = 0,
-  // start time
-  t = Date.now();
-  // 25000 simultaneous requests
-  i < 25000; i++
-) {
-  fs.readFile(__filename, function () {
-    // end time if all requests have been satisfied
-    // will be async anyway ^_^
+  callback = function () {
     if (!--i) console.log(Date.now() - t);
-  });
+  },
+  fs = require(whichFS),
+  i = 0,
+  t = Date.now();
+  i < numberOfRequests; i++
+) {
+  fs.readFile(__filename, callback);
 }

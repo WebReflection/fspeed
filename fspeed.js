@@ -1,3 +1,4 @@
+/*! (C) Andrea Giammarchi - Mit Style License */
 var fs = require('fs');
 
 function commonBoost(method) {
@@ -22,47 +23,47 @@ function commonBoost(method) {
   };
 }
 
-function fastBind(method) {
+function directBind(method) {
   return function () {
     return method.apply(fs, arguments);
   };
 }
 
 module.exports = {
-  rename: fastBind(fs.rename),
-  ftruncate: fastBind(fs.ftruncate),
-  truncate: fastBind(fs.truncate),
-  chown: fastBind(fs.chown),
-  fchown: fastBind(fs.fchown),
-  lchown: fastBind(fs.lchown),
-  chmod: fastBind(fs.chmod),
-  fchmod: fastBind(fs.fchmod),
-  lchmod: fastBind(fs.lchmod),
-  lchmod: fastBind(fs.lchmod),
+  rename: directBind(fs.rename),
+  ftruncate: directBind(fs.ftruncate),
+  truncate: directBind(fs.truncate),
+  chown: directBind(fs.chown),
+  fchown: directBind(fs.fchown),
+  lchown: directBind(fs.lchown),
+  chmod: directBind(fs.chmod),
+  fchmod: directBind(fs.fchmod),
+  lchmod: directBind(fs.lchmod),
+  lchmod: directBind(fs.lchmod),
   stat: commonBoost(fs.stat),
   lstat: commonBoost(fs.lstat),
   fstat: commonBoost(fs.fstat),
-  link: fastBind(fs.link),
-  symlink: fastBind(fs.symlink),
+  link: directBind(fs.link),
+  symlink: directBind(fs.symlink),
   readlink: commonBoost(fs.readlink),
-  realpath: fastBind(fs.realpath),
+  realpath: directBind(fs.realpath),
   unlink: commonBoost(fs.unlink),
   rmdir: commonBoost(fs.rmdir),
-  mkdir: fastBind(fs.mkdir),
+  mkdir: directBind(fs.mkdir),
   readdir: commonBoost(fs.readdir),
   close: commonBoost(fs.close),
-  open: fastBind(fs.open),
-  utimes: fastBind(fs.utimes),
+  open: directBind(fs.open),
+  utimes: directBind(fs.utimes),
   fsync: commonBoost(fs.fsync),
-  write: fastBind(fs.write),
-  read: fastBind(fs.read),
+  write: directBind(fs.write),
+  read: directBind(fs.read),
   readFile: commonBoost(fs.readFile),
-  writeFile: fastBind(fs.writeFile),
-  appendFile: fastBind(fs.appendFile),
-  watchFile: fastBind(fs.watchFile),
-  unwatchFile: fastBind(fs.unwatchFile),
-  watch: fastBind(fs.watch),
+  writeFile: directBind(fs.writeFile),
+  appendFile: directBind(fs.appendFile),
+  watchFile: directBind(fs.watchFile),
+  unwatchFile: directBind(fs.unwatchFile),
+  watch: directBind(fs.watch),
   exists: commonBoost(fs.exists),
-  createReadStream: fastBind(fs.createReadStream),
-  createWriteStream: fastBind(fs.createWriteStream)
+  createReadStream: directBind(fs.createReadStream),
+  createWriteStream: directBind(fs.createWriteStream)
 };
