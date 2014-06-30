@@ -1,6 +1,6 @@
-// node 10 bench.js
+// node bench.js 100
 // VS
-// node 10 bench.js ./fspeed
+// node bench.js 100 ./fspeed
 
 var
   numberOfRequests = Math.abs(
